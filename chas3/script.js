@@ -16,7 +16,7 @@ const { readFile, appendFile, writeFile } = require("./file.js");
 // readFile("file.txt")
 //     .then((resolve) => console.log(resolve))
 //     .catch((error) => console.log(error));
-// Order of execution chaos
+// // Order of execution chaos
 // Fix: (with async function(await))
 
 // async function run() {
