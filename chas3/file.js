@@ -1,7 +1,7 @@
 const fs = require("fs"); // file system commands access
 
 const readFile = (fileName) => {
-    return new Promise((success, fail) => {
+    return new Promise((success, fail) => { // success, fail = callback functions
         fs.readFile(fileName, "utf-8", (err, data) => { 
             if(err) fail(err); 
             success(data);

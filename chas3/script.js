@@ -78,3 +78,10 @@ const firstThree = studenti
     .sort((a,b) => b.prosek - a.prosek) // descending order sort
     .slice(0, 3); // first 3 elements - indexes: 0,1,2 (3 elements)
 console.log("Task 3:", firstThree);
+
+
+
+// Important Notice:
+// .then().catch() is the same as try,catch, they do the same thing, just in modern
+// codebases, try and catch method is used more often, the only difference is how they're
+// written, so always use try/catch
