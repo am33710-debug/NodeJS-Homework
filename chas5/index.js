@@ -1,37 +1,41 @@
 // Da se napishat 10 razlichni izrazi po zhelba, primer: Tel. broj, adresa...
 // Isprobaj barem 1 na Postman so POST method
 
+
+//const phoneNumber = new RegExp("\+\d{3} \d{3}\-\d{3}\-\d{3}");
+            //const address = new RegExp("[A-Za-z]+\, [A-Za-z]+ [A-Za-z]+ number\.\d+\, \d{4}");
+            //const url = new RegExp("^(http|https)\:\/\/www\.[A-Za-z0-9-]+\.[A-Za-z0-9-]{2,}$"); // short url, not full -> http(s)://www.google.com, nothing else
+            // doesn't work(^) - don't use
+
+// const regexes = {
+            //     "phoneNumber": "/^\+\d{3} \d{3}-\d{3}-\d{3}$/",
+            //     "address": "/^[A-Za-z]+, [A-Za-z]+ [A-Za-z]+ number\.\d+, \d{4}$/",
+            //     "url": "/^(http|https):\/\/www\.[A-Za-z0-9-]+\.[A-Za-z]{2,}$/"
+            // };
+            // Experiment(^) -> will be used as: regexes.phoneNumber for value(the expression) in a variable
+
+
 // Server URL: http://localhost:3000
 const http = require("http");
 
 const handler = (request, response) => {
     if(request.method === "POST") {
-        let data = ""; // where the information(data) will be stored (this variable) from POST
+        let data = ""; // we hold data here from POST 
         
         // we request the body from POST in Postman
         request.on("data", (chunk) => {
             data += chunk; // this is a string now, we need to JSON parse it down the line
         });
         
-        request.on("end", () => {
+        request.on("end", () => { // what server responds with
             // RegExp samples
-            //const phoneNumber = RegExp("\+\d{3} \d{3}\-\d{3}\-\d{3}");
-            //const address = RegExp("[A-Za-z]+\, [A-Za-z]+ [A-Za-z]+ number\.\d+\, \d{4}");
-            //const url = RegExp("^(http|https)\:\/\/www\.[A-Za-z0-9-]+\.[A-Za-z0-9-]{2,}$"); // short url, not full -> http(s)://www.google.com, nothing else
-            // doesn't work(^)
-
-            // const regexes = {
-            //     "phone number": "/^\+\d{3} \d{3}-\d{3}-\d{3}$/",
-            //     "address": "/^[A-Za-z]+, [A-Za-z]+ [A-Za-z]+ number\.\d+, \d{4}$/",
-            //     "url": "/^(http|https):\/\/www\.[A-Za-z0-9-]+\.[A-Za-z]{2,}$/"
-            // };
-            // Experiment(^)
             const phoneNumber = /^\+\d{3} \d{3}-\d{3}-\d{3}$/;
             const address = /^[A-Za-z]+, [A-Za-z]+ [A-Za-z]+ number\.\d+, \d{4}$/;
             const url = /^(http|https):\/\/www\.[A-Za-z0-9-]+\.[A-Za-z]{2,}$/;
 
-            // The type of the sample(manipulable) in JSON format in Postman to await response from the server 
-            const { type, sample } = JSON.parse(data); // data sent to Postman in JSON format, manipulable
+            //console.log(data);  // debugging
+            const { type, sample } = JSON.parse(data);
+            //console.log(JSON.stringify(data)); // debugging
 
             // Function that checks if valid
             const validate = (regExp, sample, name) => { // name = type name - Phone Number, Adress... as we get an invalid format output for type 
@@ -43,7 +47,8 @@ const handler = (request, response) => {
                         response.end(`Sample ${sample} is NOT valid for ${name} format.`);
                     } // Status 200 = successful response, 400 = bad response (bad syntax)
             }
-
+            
+            //let typeLower = type.toLowerCase().trim(); // to avoid multiple cases(chaining built-in functions)
             switch (type) {
                 case "Phone Number":
                 case "phone number":
