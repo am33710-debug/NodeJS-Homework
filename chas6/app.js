@@ -9,9 +9,9 @@ const server = http.createServer((request, response) => {
     // RegExps
     const regexIme = /^[A-Z][a-z]+$/;
     const regexPrezime = /^[A-Z][a-z]+$/;
-    const regexEMBG = /^\d{17}$/; 
+    const regexEMBG = /^\d{5}$/; 
 
-    switch(parsedUrl.pathname.toLowerCase().trim()) { // sends them in lowercase(all chars) + removes spaces
+    switch(parsedUrl.pathname) {
         case "/ime":
             handlePerson(request, response, parsedUrl.query.ime, regexIme);
             break;
