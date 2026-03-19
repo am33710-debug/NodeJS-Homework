@@ -14,6 +14,7 @@ const addBook = async (book) => {
         console.error("Error adding book:", error);
     }
 }
+// Add edit/deleteBook functions here manually
 
 module.exports = {
     getBooks,
