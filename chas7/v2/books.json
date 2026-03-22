@@ -1,6 +1,6 @@
 [
-  { "title": "New1", "publisher": "Xyz1", "year": 2015 },
-  { "title": "New2", "publisher": "Xyz2", "year": 2016 },
-  { "title": "New3", "publisher": "Xyz3", "year": 2018 },
-  { "title": "Blabla", "publisher": "XyzX", "year": 2020 }
+  { "title": "New1", "publisher": "Xyz1", "year": 2015, "rating": 4.6, "pages": 123 },
+  { "title": "New2", "publisher": "Xyz2", "year": 2016, "rating": 4.8, "pages": 200 },
+  { "title": "New3", "publisher": "Xyz3", "year": 2018, "rating": 4.9, "pages": 350 },
+  { "title": "Blabla", "publisher": "XyzX", "year": 2020, "rating": 4.1, "pages": 400 }
 ]

@@ -42,4 +42,12 @@ const deleteBook = async (request, response) => {
     return response.status(200).send(`Book with index ${bookIndex} has been deleted successfully.`);
 }
 
-module.exports = { readBooks, addBook, editBook, deleteBook };
+// For middleware handling 
+const sendBook = async (request, response) => {
+    const books = await readFile();
+    const book = books.find(book => book.title.toLowerCase() === request.params.title.toLowerCase());
+
+    return response.status(200).send(`Book ${request.params.title} meets all criteria.`); // if all middlewares pass, return the book content and that it has passed
+}
+
+module.exports = { readBooks, addBook, editBook, deleteBook, sendBook };
