@@ -14,7 +14,7 @@ async function getSingleBook(request, response, next) {
     if (!book) 
         return response.status(404).send(`Error: Book with title ${request.params.title} wasn't found.`);
 
-    request.book = book; // so other middleware can use this when the program continues, otherwise in every middleware we will have to call it
+    request.book = book; // so other middleware can use this when the program continues, otherwise in every middleware we will have to call it (not good practice)
     next();
 }
 

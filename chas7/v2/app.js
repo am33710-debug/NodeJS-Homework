@@ -2,7 +2,7 @@ const express = require("express");
 
 const { readBooks, addBook, editBook, deleteBook, sendBook } = require("./handler.js");
 
-const {getSingleBook, checkBookAgeAndPages, checkBookRating } = require("./middleware.js");
+const { getSingleBook, checkBookAgeAndPages, checkBookRating } = require("./middleware.js");
 
 const app = express();
 app.use(express.json());
