@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 1.5rem;
+        }
+        h1 {
+            margin: 20px;
+            padding: 20px;
+            background-color: bisque;
+            border: 1px solid black;
+            border-radius: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+
+    <h1>Total Numbers of:</h1>
+    <h1>Characters:  <i>{{charNumber}}</i>  </h1>
+    <h1>Words:  <i>{{wordNumber}}</i>  </h1>
+    <h1>Words that start with a vowel - A/E/I/O/U:  <i>{{vowelWord}}</i>  </h1>
+    <h1>Sentences:  <i>{{sentenceNumber}}</i>  </h1>
+    
+    <hr>
+
+    <h1>Specific Cases for Words:</h1>
+    <h1>With 5 letters:  <i>{{wordNumberEqual5}}</i>  </h1>
+    <h1>With less than 5 letters:  <i>{{wordNumberSmaller5}}</i>  </h1>
+    <h1>With over 5 letters:  <i>{{wordNumberBigger5}}</i>  </h1>
+
+    <hr>
+</body>
+</html>
