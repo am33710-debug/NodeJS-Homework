@@ -23,7 +23,7 @@ const postAnalysis = async (request, response) => {
         // trim(remove) white spaces first
         // split text into an array of individual words by using a regex to split by whitespaces(1 or more)
         const words = text.trim().split(/\s+/);
-        const wordNumber = words.length; 
+        const wordNumber = words.length;
         
         // Filter words array, test each word against vowelRegex, count how many pass
         const vowelRegex = /^[аоуиеАОУИЕ]/u; // RegExp (Cyrillic)
@@ -41,6 +41,7 @@ const postAnalysis = async (request, response) => {
         const wordNumberEqual5 = words.filter(word => word.length === 5).length;
         const wordNumberSmaller5 = words.filter(word => word.length < 5).length;
         const wordNumberBigger5 = words.filter(word => word.length > 5).length;
+        // Use five not 5
 
         // All results into one object, variable names match the {{}} placeholders in analysis.html
         const data = { charNumber, wordNumber, vowelWord, sentenceNumber, wordNumberEqual5, wordNumberSmaller5, wordNumberBigger5 };
