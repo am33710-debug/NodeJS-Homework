@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students from X-University</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        table, th, tr, td {
+            margin: 100px;
+            padding: 10px;
+            background-color: bisque;
+            border: 1px solid black;
+            text-align: center;
+        }
+        header {
+            margin: 100px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            background-color: aquamarine;
+            border: 1px solid black;
+            border-radius: 1rem;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <%- include("header") %>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>GPA</th>
+            <th>Action</th>
+        </tr>
+
+        <% students.forEach((student, index) => { %>
+        <tr>
+            <td><%= student.firstName %></td>
+            <td><%= student.lastName %></td>
+            <td><%= student.GPA %></td>
+            <td>
+                <a href="/delete?index=<%=index%>">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

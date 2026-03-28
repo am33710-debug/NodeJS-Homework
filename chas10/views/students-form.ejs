@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students from X-University</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            margin: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            background-color: aquamarine;
+            border: 1px solid black;
+            border-radius: 1rem;
+            padding: 5px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 50px;
+            gap: 10px;
+            border: 1px solid black;
+            border-radius: 1rem;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page used to add a student -->
+    <%- include("header") %>
+
+    <form action="/form" method="post">
+        <input type="text" name="firstName" placeholder="Student Firstname" required>
+        <input type="text" name="lastName" placeholder="Student Lastname" required>
+        <input type="text" name="GPA" placeholder="Student GPA" required>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
