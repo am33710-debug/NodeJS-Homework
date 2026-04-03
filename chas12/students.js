@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
     GPA: Number,
     ID: Number,
     scholarship: Boolean,
-});
+}); //{ versionKey: false}
 
 const studentModel = mongoose.model("Student", studentSchema, "students"); // send this schema to the collection students
 
