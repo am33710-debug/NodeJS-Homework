@@ -73,7 +73,7 @@ const filterByGenre = async (request, response) => {
     }
 }
 
-const topByRating = async (request, response) => {
+const descendByRating = async (request, response) => {
     try {
         const topMovies = await readTopRated();
         return response.status(200).send(topMovies);
@@ -93,7 +93,7 @@ const findByTitle = async (request, response) => {
     }
 }
 
-const filterByReleaseyear = async (request, response) => {
+const filterByReleaseYear = async (request, response) => {
     try {
         const findMovies = await readMoviesAfterX(request.params.year);
         return response.status(200).send(findMovies);
@@ -106,5 +106,5 @@ const filterByReleaseyear = async (request, response) => {
 
 module.exports = {
     createMovie, readMovies, readMovie, updateMovie, deleteMovie,
-    filterByGenre, topByRating, findByTitle, filterByReleaseyear,
+    filterByGenre, descendByRating, findByTitle, filterByReleaseYear,
 };

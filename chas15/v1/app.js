@@ -8,7 +8,7 @@ connect();
 // Handlers
 const { 
     createMovie, readMovies, readMovie, updateMovie, deleteMovie,
-    filterByGenre, topByRating, findByTitle, filterByReleaseyear,
+    filterByGenre, descendByRating, findByTitle, filterByReleaseYear,
  } = require("../v1/controller/movieHandlers");
 
 // App routing
@@ -17,10 +17,10 @@ app.use(express.json());
 
 // Using queries (first come these because if the come second, MongoDB crashes due to dynamic arguments - :id)
 app.get("/movies/genre", filterByGenre); // get movies by genre
-app.get("/movies/rating", topByRating); // get top-rated movies (sort by highest first)
+app.get("/movies/rating", descendByRating); // get top-rated movies (sort by highest first)
 app.get("/movies/title", findByTitle); // search movies by title: dark finds Dark Knight (Batman)
 
-app.get("/movies/release/:year", filterByReleaseyear); // get movies released after year X -> /w params
+app.get("/movies/release/:year", filterByReleaseYear); // get movies released after year X -> /w params
 
 app.get("/movies", readMovies);
 app.get("/movies/:id", readMovie); 
