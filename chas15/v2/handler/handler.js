@@ -1,14 +1,17 @@
 const express = require("express");
 const { read, write } = require("../read-write/read-write");
-
+const { movieCreate, movieUpdate, validateMovie } = require("../model/validate");
+ 
 const addMovie = async (request, response) => {
     try {
+        await validateMovie(request.body, movieCreate); // addition: validation
         let movies = await read("movies.json");
         movies.push(request.body);
         await write("movies.json", movies);
 
         return response.status(200).send("Movie added");
     } catch (error) {
+        // console.log(error); // debugging
         return response.status(500).send("Internal Server Error");
     }
 }
@@ -36,6 +39,7 @@ const readMovie = async (request, response) => {
 
 const updateMovie = async (request, response) => {
     try {
+        await validateMovie(request.body, movieUpdate); // addition: validation
         let movies = await read("movies.json");
 
         const Movies = movies.map((movie) => {

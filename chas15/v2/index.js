@@ -23,7 +23,3 @@ app.put("/movies/:id", updateMovie);
 app.delete("/movies/:id", deleteMovie);
 
 app.listen(3000, () => console.log("Server opened at port 3000"));
-
-// Error:
-// undefined for data(movies.json) at line 8 in the read-write.js file, which refers to JSON.parse(data)
-// AI gives shit advice and fixes

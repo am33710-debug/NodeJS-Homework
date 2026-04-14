@@ -16,7 +16,7 @@ const read = async (fileName) => {
 
 const write = async (fileName, data) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(`${path}${fileName}`, data, (error) => {
+        fs.writeFile(`${path}${fileName}`, JSON.stringify(data, null, 2), (error) => {
             if (error) 
                 reject(error);
             resolve();

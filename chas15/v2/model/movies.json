@@ -1,14 +1,16 @@
 [
   {
+    "id": 1,
     "title": "Inception",
     "description": "A skilled thief enters people's dreams to steal secrets but is offered a chance at redemption through one final mission.",
     "genre": "Sci-Fi",
     "releaseYear": 2010,
-    "rating": 8.8,
+    "rating": 9,
     "duration": 148,
     "director": "Christopher Nolan"
   },
   {
+    "id": 2,
     "title": "The Godfather",
     "description": "The aging patriarch of a crime family transfers control of his empire to his reluctant son.",
     "genre": "Crime",
@@ -18,6 +20,7 @@
     "director": "Francis Ford Coppola"
   },
   {
+    "id": 3,
     "title": "Interstellar",
     "description": "A team of explorers travels through a wormhole in space to ensure humanity's survival.",
     "genre": "Adventure",
@@ -27,6 +30,7 @@
     "director": "Christopher Nolan"
   },
   {
+    "id": 4,
     "title": "Parasite",
     "description": "A poor family schemes to become employed by a wealthy household with unexpected consequences.",
     "genre": "Thriller",
@@ -36,12 +40,23 @@
     "director": "Bong Joon-ho"
   },
   {
+    "id": 5,
     "title": "The Dark Knight",
     "description": "Batman faces the Joker, a criminal mastermind who plunges Gotham into chaos.",
     "genre": "Action",
     "releaseYear": 2008,
-    "rating": 9.0,
+    "rating": 9,
     "duration": 152,
+    "director": "Christopher Nolan"
+  },
+  {
+    "id": 6,
+    "title": "Inception",
+    "description": "A skilled thief enters people's dreams to steal secrets but is offered a chance at redemption through one final mission.",
+    "genre": "Sci-Fi",
+    "releaseYear": 2010,
+    "rating": 8.8,
+    "duration": 148,
     "director": "Christopher Nolan"
   }
 ]
