@@ -1,5 +1,7 @@
 const express = require("express");
 
+const { movieCreate, movieUpdate, validateMovie } = require("../model/validate");
+
 const { create, 
     read, 
     readOne, 
@@ -14,6 +16,7 @@ const { create,
 // CRUD Handlers
 const createMovie = async (request, response) => {
     try {
+        await validateMovie(request.body, movieCreate);
         const newMovie = await create(request.body);
         return response.status(200).send("New Movie Successfully Created");
     } catch (error) {
@@ -44,6 +47,7 @@ const readMovie = async (request, response) => {
 
 const updateMovie = async (request, response) => {
     try {
+        await validateMovie(request.body, movieUpdate);
         const updatedMovie = await update(request.params.id, request.body);
         return response.status(200).send(`Movie with ID:${request.params.id} successfully updated`);
     } catch (error) {

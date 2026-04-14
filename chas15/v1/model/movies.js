@@ -53,7 +53,7 @@ const readOne = async (_id) => {
 } 
 
 const update = async (_id, movieData) => {
-    return await Movie.updateOne({ _id }, movieData);
+    return await Movie.updateOne({ _id }, { $set: movieData});
 }
 
 const remove = async (_id) => {
