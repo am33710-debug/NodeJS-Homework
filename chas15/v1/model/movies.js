@@ -1,35 +1,39 @@
 const mongoose = require("mongoose");
 
 const movieSchema = mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        trim: true
+  title: {
+      type: String,
+      required: true,
+      trim: true
   },
   description: {
-        type: String
+      type: String
   },
   genre: {
-        type: String,
-        required: true
+      type: String,
+      required: true
   },
   releaseYear: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true
   },
   rating: {
-        type: Number,
-        min: 0,
-        max: 10,
-        default: 0
+      type: Number,
+      min: 0,
+      max: 10,
+      default: 0
   },
   duration: {
-        type: Number // in minutes
+      type: Number // in minutes
   },
   director: {
-        type: String
+      type: String
   },
-}, {timestamps: true});
+  createdBy: {
+      type: String,
+      required: true,
+  },
+}, {timestamps: true}); // versionKey: false in the {} to remove __v: in Document (which is created automatically and keeps track of the version modified in case of $push/pull array mod)
 
 const Movie = mongoose.model("Movie", movieSchema, "movies");
 
@@ -44,39 +48,40 @@ const create = async (movieData) => {
     //await Movie.movies.insertOne(movieData)
 }
 
-const read = async () => {
-    return await Movie.find();
+const read = async (createdBy) => {
+    return await Movie.find({ createdBy });
 }
 
-const readOne = async (_id) => {
-      return await Movie.findOne({ _id });
+const readOne = async (_id, createdBy) => {
+    return await Movie.findOne({ _id, createdBy });
 } 
 
-const update = async (_id, movieData) => {
-    return await Movie.updateOne({ _id }, { $set: movieData});
+const update = async (_id, createdBy, movieData) => {
+    return await Movie.updateOne({ _id, createdBy }, { $set: movieData });
 }
 
-const remove = async (_id) => {
-    return await Movie.deleteOne({ _id });
+const remove = async (_id, createdBy) => {
+    return await Movie.deleteOne({ _id, createdBy });
 }
 
 // Custom CRUDs
-const readByGenre = async (genre) => {
-      return await Movie.find({ genre });
+const readByGenre = async (genre, createdBy) => {
+    return await Movie.find({ genre, createdBy });
 }
 
-const readTopRated = async () => {
-      return await Movie.find().sort({ rating: -1 });
+const readTopRated = async (createdBy) => {
+    return await Movie.find({ createdBy }).sort({ rating: -1 });
 }
 
-const readByTitle = async (titleRegExp) => {
-      return await Movie.findOne({
-            title: { $regex: titleRegExp, $options: "i" } 
-      }); // search by RegExp and case-insensitive - dark, Dark, DARK.. - all matched
+const readByTitle = async (titleRegExp, createdBy) => {
+    return await Movie.findOne({
+        title: { $regex: titleRegExp, $options: "i" },
+        createdBy
+    });
 }
 
-const readMoviesAfterX = async (year) => {
-      return await Movie.find({ releaseYear: { $gt: year }});
+const readMoviesAfterX = async (year, createdBy) => {
+    return await Movie.find({ releaseYear: { $gt: year }, createdBy });
 }
 
 

@@ -27,7 +27,7 @@ const createMovie = async (request, response) => {
 
 const readMovies = async (request, response) => {
     try {
-        const displayMovies = await read();
+        const displayMovies = await read(request.body.createdBy);
         return response.status(200).send(displayMovies);
     } catch (error) {
         console.log("Error:", error);
@@ -37,7 +37,7 @@ const readMovies = async (request, response) => {
 
 const readMovie = async (request, response) => {
     try {
-        const displayMovie = await readOne(request.params.id);
+        const displayMovie = await readOne(request.params.id, request.body.createdBy);
         return response.status(200).send(displayMovie);
     } catch (error) {
         console.log("Error:", error);
@@ -48,7 +48,7 @@ const readMovie = async (request, response) => {
 const updateMovie = async (request, response) => {
     try {
         await validateMovie(request.body, movieUpdate);
-        const updatedMovie = await update(request.params.id, request.body);
+        const updatedMovie = await update(request.params.id, request.body.createdBy, request.body);
         return response.status(200).send(`Movie with ID:${request.params.id} successfully updated`);
     } catch (error) {
         console.log("Error:", error);
@@ -58,7 +58,7 @@ const updateMovie = async (request, response) => {
 
 const deleteMovie = async (request, response) => {
     try {
-        const removeMovie = await remove(request.params.id);
+        const removeMovie = await remove(request.params.id, request.body.createdBy);
         return response.status(200).send(`Movie with ID:${request.params.id} successfully deleted`);
     } catch (error) {
         console.log("Error:", error);
@@ -69,7 +69,7 @@ const deleteMovie = async (request, response) => {
 // Custom CRUD Handlers
 const filterByGenre = async (request, response) => {
     try {
-        const filterGenre = await readByGenre(request.query.genre);
+        const filterGenre = await readByGenre(request.query.genre, request.body.createdBy);
         return response.status(200).send(filterGenre);
     } catch (error) {
         console.log("Error:", error);
@@ -79,7 +79,7 @@ const filterByGenre = async (request, response) => {
 
 const descendByRating = async (request, response) => {
     try {
-        const topMovies = await readTopRated();
+        const topMovies = await readTopRated(request.body.createdBy);
         return response.status(200).send(topMovies);
     } catch (error) {
         console.log("Error:", error);
@@ -89,7 +89,7 @@ const descendByRating = async (request, response) => {
 
 const findByTitle = async (request, response) => {
     try {
-        const findMovie = await readByTitle(request.query.title);
+        const findMovie = await readByTitle(request.query.title, request.body.createdBy);
         return response.status(200).send(findMovie);
     } catch (error) {
         console.log("Error:", error);
@@ -99,7 +99,7 @@ const findByTitle = async (request, response) => {
 
 const filterByReleaseYear = async (request, response) => {
     try {
-        const findMovies = await readMoviesAfterX(request.params.year);
+        const findMovies = await readMoviesAfterX(request.params.year, request.body.createdBy);
         return response.status(200).send(findMovies);
     } catch (error) {
         console.log("Error:", error);
