@@ -30,8 +30,9 @@ const movieSchema = mongoose.Schema({
       type: String
   },
   createdBy: {
-      type: String,
+      type: mongoose.SchemaTypes.ObjectId,
       required: true,
+      //ref: "Account" // fix
   },
 }, {timestamps: true}); // versionKey: false in the {} to remove __v: in Document (which is created automatically and keeps track of the version modified in case of $push/pull array mod)
 
