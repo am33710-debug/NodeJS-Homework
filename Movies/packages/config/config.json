@@ -1,0 +1,22 @@
+{
+    "development": {
+        "port": 3000,
+        "MONGO_USERNAME": "Aki_DB_ExerciseUse",
+        "MONGO_PASSWORD": "Akii2324!",
+        "jwt_secret": "development"
+    },
+
+    "staging": {
+        "port": 3000,
+        "MONGO_USERNAME": "Aki_DB_ExerciseUse",
+        "MONGO_PASSWORD": "Akii2324!",
+        "jwt_secret": "staging"
+    },
+
+    "live": {
+        "port": 3000,
+        "MONGO_USERNAME": "Aki_DB_ExerciseUse",
+        "MONGO_PASSWORD": "Akii2324!",
+        "jwt_secret": "live"
+    }
+}
